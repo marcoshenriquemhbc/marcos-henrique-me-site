@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Série de 4 Aulas Ao Vivo – Captação de Pacientes | Marcos Henrique</title>
+<meta name="description" content="Gere de 15 a 35 novos agendamentos toda semana sem depender de indicação. Série gratuita de 4 aulas ao vivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --verde:#1a4a2e;
+  --verde-claro:#2d6e45;
+  --verde-neon:#3a9e5f;
+  --verde-bg:#0d2a1a;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  background:#0a0a0a;
+  color:#ffffff;
+  font-family:'Montserrat',sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* TOPO ESTÁTICO */
+.topo{
+  background:var(--verde);
+  padding:12px 24px;
+  text-align:center;
+}
+.topo p{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:#fff;
+}
+.topo p span{color:#7fffb4;margin:0 8px}
+
+/* HERO */
+.hero{
+  max-width:780px;
+  margin:0 auto;
+  padding:60px 24px 40px;
+  text-align:center;
+}
+.tag-evento{
+  display:inline-block;
+  background:var(--verde-bg);
+  border:1px solid var(--verde-neon);
+  color:var(--verde-neon);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:6px 18px;
+  border-radius:2px;
+  margin-bottom:28px;
+}
+.hero h1{
+  font-size:clamp(26px,5vw,50px);
+  font-weight:800;
+  line-height:1.15;
+  color:#ffffff;
+  margin-bottom:20px;
+  letter-spacing:-0.02em;
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--verde-neon);
+}
+.subtitulo{
+  font-size:16px;
+  font-weight:400;
+  color:#e8e8e8;
+  max-width:560px;
+  margin:0 auto 40px;
+  line-height:1.7;
+}
+
+/* CTA BOX */
+.cta-box{
+  background:#111111;
+  border:1px solid #222222;
+  border-top:3px solid var(--verde-neon);
+  border-radius:4px;
+  padding:32px 32px 28px;
+  max-width:480px;
+  margin:0 auto 12px;
+}
+.cta-instrucao{
+  font-size:12px;
+  font-weight:700;
+  color:#cccccc;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:16px;
+}
+.btn-cta{
+  display:block;
+  width:100%;
+  background:var(--verde-neon);
+  color:#ffffff;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:18px 24px;
+  border:none;
+  border-radius:3px;
+  cursor:pointer;
+  transition:background .2s,transform .1s;
+  text-decoration:none;
+  text-align:center;
+}
+.btn-cta:hover{background:#2d9456}
+.btn-cta:active{transform:scale(.98)}
+.privacidade{
+  font-size:11px;
+  font-weight:400;
+  color:#aaaaaa;
+  text-align:center;
+  margin-top:10px;
+}
+
+/* DETALHES EVENTO */
+.detalhes{
+  display:flex;
+  max-width:480px;
+  margin:0 auto 50px;
+  border:1px solid #1e1e1e;
+  border-radius:3px;
+  overflow:hidden;
+}
+.detalhe-item{
+  flex:1;
+  text-align:center;
+  padding:14px 8px;
+  border-right:1px solid #1e1e1e;
+  background:#0d0d0d;
+}
+.detalhe-item:last-child{border-right:none}
+.detalhe-icon{font-size:18px;margin-bottom:4px;display:block}
+.detalhe-label{
+  font-size:10px;
+  font-weight:700;
+  color:#aaaaaa;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  display:block;
+  margin-bottom:3px;
+}
+.detalhe-valor{
+  font-size:13px;
+  font-weight:700;
+  color:#cccccc;
+}
+
+/* DIVISOR */
+.divisor{
+  max-width:780px;
+  margin:0 auto;
+  padding:0 24px;
+  border-top:1px solid #1a1a1a;
+}
+
+/* BULLETS */
+.bullets-section{
+  max-width:680px;
+  margin:0 auto;
+  padding:50px 24px;
+}
+.bullets-titulo{
+  font-size:11px;
+  font-weight:700;
+  color:var(--verde-neon);
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  margin-bottom:28px;
+  text-align:center;
+}
+.bullet-item{
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  padding:22px 0;
+  border-bottom:1px solid #161616;
+}
+.bullet-item:last-child{border-bottom:none}
+.bullet-num{
+  flex-shrink:0;
+  width:32px;
+  height:32px;
+  background:var(--verde-bg);
+  border:1px solid var(--verde);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:700;
+  color:var(--verde-neon);
+  margin-top:2px;
+}
+.bullet-texto{
+  font-size:16px;
+  font-weight:400;
+  color:#dddddd;
+  line-height:1.65;
+}
+.bullet-texto strong{
+  color:#ffffff;
+  font-weight:700;
+}
+
+/* APRESENTADOR */
+.apresentador{
+  max-width:780px;
+  margin:0 auto;
+  padding:50px 24px 60px;
+}
+.apres-inner{
+  display:flex;
+  gap:36px;
+  align-items:flex-start;
+  background:#0d0d0d;
+  border:1px solid #1a1a1a;
+  border-left:3px solid var(--verde);
+  border-radius:4px;
+  padding:36px;
+}
+.apres-foto{
+  flex-shrink:0;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--verde);
+  filter:grayscale(15%);
+}
+.apres-nome{
+  font-size:22px;
+  font-weight:800;
+  color:#ffffff;
+  margin-bottom:6px;
+  letter-spacing:-0.01em;
+}
+.apres-cargo{
+  font-size:11px;
+  font-weight:700;
+  color:var(--verde-neon);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:14px;
+}
+.apres-bio{
+  font-size:14px;
+  font-weight:400;
+  color:#cccccc;
+  line-height:1.8;
+}
+
+/* CTA FINAL */
+.cta-final{
+  background:var(--verde-bg);
+  border-top:1px solid #1a3a24;
+  border-bottom:1px solid #1a3a24;
+  padding:50px 24px;
+  text-align:center;
+}
+.cta-final h2{
+  font-size:clamp(20px,3.5vw,32px);
+  font-weight:800;
+  color:#ffffff;
+  margin-bottom:10px;
+  letter-spacing:-0.01em;
+}
+.cta-final .sub-cta{
+  font-size:12px;
+  font-weight:700;
+  color:#7fffb4;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:28px;
+}
+.btn-cta-final{
+  display:inline-block;
+  background:var(--verde-neon);
+  color:#ffffff;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:18px 40px;
+  border-radius:3px;
+  text-decoration:none;
+  transition:background .2s,transform .1s;
+}
+.btn-cta-final:hover{background:#2d9456}
+.btn-cta-final:active{transform:scale(.98)}
+
+/* RODAPÉ */
+footer{
+  padding:24px;
+  text-align:center;
+}
+footer p{
+  font-size:11px;
+  font-weight:400;
+  color:#aaaaaa;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .topo p{font-size:10px}
+  .apres-inner{flex-direction:column;align-items:center;text-align:center;padding:24px 20px}
+  .apres-foto{width:88px;height:88px}
+  .cta-box{padding:24px 18px 20px}
+  .detalhes{flex-direction:column}
+  .detalhe-item{border-right:none;border-bottom:1px solid #1e1e1e}
+  .detalhe-item:last-child{border-bottom:none}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1053340519637753');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1053340519637753&amp;ev=PageView&amp;noscript=1"></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<!-- TOPO ESTÁTICO -->
+<div class="topo">
+  <p>
+    Especialista
+    <span>·</span>
+    Série de 4 Aulas Ao Vivo
+    <span>·</span>
+    Como Receber 5 a 10 Contatos Qualificados por Semana Pelo Instagram 🎯
+    <span>·</span>
+    Vagas Limitadas
+  </p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag-evento">Série Gratuita · 4 Aulas Ao Vivo</div>
+
+  <h1>Se você vende serviços pelo Instagram e não está faturando o desejado,<em> isso vai mudar.</em></h1>
+
+  <p class="subtitulo">Em uma Série de 4 Aulas Ao Vivo, eu vou te mostrar a minha estratégia para estruturar o seu Instagram e receber de <strong>5 a 10 contatos qualificados por semana</strong> — de pessoas que já chegam querendo contratar a sua solução. Sem depender de indicação e sem postar todo dia.</p>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <p class="cta-instrucao">Inscrição gratuita — clique para entrar</p>
+    <a href="https://chat.whatsapp.com/BTEUk6qy1Nu4P6zzo3K5yn" class="btn-cta" onclick="fbq('track','CompleteRegistration');">
+      Clique para entrar no grupo VIP agora
+    </a>
+    <p class="privacidade">🔒 Grupo gratuito · Sem compromisso</p>
+  </div>
+
+  <!-- DETALHES EVENTO -->
+  <div class="detalhes">
+    <div class="detalhe-item">
+      <span class="detalhe-icon">📅</span>
+      <span class="detalhe-label">Quando</span>
+      <span class="detalhe-valor">Próxima Terça</span>
+    </div>
+    <div class="detalhe-item">
+      <span class="detalhe-icon">🕗</span>
+      <span class="detalhe-label">Horário</span>
+      <span class="detalhe-valor">20h (BRT)</span>
+    </div>
+    <div class="detalhe-item">
+      <span class="detalhe-icon">📲</span>
+      <span class="detalhe-label">Formato</span>
+      <span class="detalhe-valor">Ao Vivo</span>
+    </div>
+    <div class="detalhe-item">
+      <span class="detalhe-icon">💰</span>
+      <span class="detalhe-label">Investimento</span>
+      <span class="detalhe-valor">Gratuito</span>
+    </div>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<!-- BULLETS -->
+<section class="bullets-section">
+  <p class="bullets-titulo">O que você vai aprender nessa série</p>
+
+  <div class="bullet-item">
+    <div class="bullet-num">1</div>
+    <p class="bullet-texto">Por que muitos especialistas <strong>atraem o cliente errado</strong>, e como corrigir o posicionamento no Instagram para mudar o resultado imediatamente.</p>
+  </div>
+
+  <div class="bullet-item">
+    <div class="bullet-num">2</div>
+    <p class="bullet-texto">A estratégia para transformar o seu Instagram em um <strong>sistema previsível de geração de contatos qualificados</strong> — pessoas que já chegam prontas para contratar.</p>
+  </div>
+
+  <div class="bullet-item">
+    <div class="bullet-num">3</div>
+    <p class="bullet-texto">Como parar de perder oportunidades por falta de clareza, e <strong>fechar novos contratos toda semana</strong> sem depender de indicação ou de volume de conteúdo.</p>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<!-- APRESENTADOR -->
+<section class="apresentador">
+  <div class="apres-inner">
+    <img class="apres-foto" src="/wp-content/uploads/2026/04/Marcos-Henrique-YT.jpg" alt="Foto de Marcos Henrique" loading="lazy" width="110" height="110">
+    <div>
+      <p class="apres-nome">Marcos Henrique</p>
+      <p class="apres-cargo">Especialista em Posicionamento e Captação pelo Instagram</p>
+      <p class="apres-bio">
+        Marcos Henrique é especialista em estratégia de posicionamento e funis de captação de clientes para especialistas que vendem serviços pelo Instagram. Desde 2012 no mercado digital, certificado pela DigitalMarketer (EUA) — ele ajuda profissionais a construir sistemas previsíveis de geração de contatos qualificados, sem depender de sorte ou de volume de conteúdo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Sua vaga ainda está disponível.</h2>
+  <p class="sub-cta">Próxima terça-feira · 20h · Ao Vivo · 100% Gratuito</p>
+  <a href="https://chat.whatsapp.com/BTEUk6qy1Nu4P6zzo3K5yn" class="btn-cta-final" onclick="fbq('track','CompleteRegistration');">
+    Clique para entrar no grupo VIP agora
+  </a>
+</section>
+
+<footer>
+  <p>© Marcos Henrique · Todos os direitos reservados · Exclusivo para especialistas que vendem serviços pelo Instagram</p>
+</footer>
+
+</body>
+</html>
