@@ -1,176 +1,34 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
 
-const posts = [
-  {
-    href: '/agencia-de-marketing-digital-em-sorocaba/',
-    img: '/wp-content/uploads/2026/05/agencia-de-marketing-digital-em-sorocaba.png',
-    alt: 'agencia de marketing digital em sorocaba',
-    title: 'Agencia de Marketing Digital em Sorocaba',
-    date: 'maio 23',
-    dateUrl: '2026/05/23',
-    excerpt: 'Contratar uma agencia de marketing digital em sorocaba pode[…]',
-  },
-  {
-    href: '/agencia-de-marketing-digital-para-medicos/',
-    img: '/wp-content/uploads/2026/05/Agencia-de-marketing-digital-para-medicos.png',
-    alt: 'Agência de marketing digital para médicos',
-    title: 'Agência de marketing digital para médicos',
-    date: 'maio 22',
-    dateUrl: '2026/05/22',
-    excerpt: 'Contratar uma agência de marketing digital para médicos pode[…]',
-  },
-  {
-    href: '/agencia-de-marketing-digital-rj/',
-    img: '/wp-content/uploads/2026/05/Agencia-de-Marketing-Digital-Rj.png',
-    alt: 'Agencia de Marketing Digital Rj',
-    title: 'Agencia de Marketing Digital Rj',
-    date: 'maio 21',
-    dateUrl: '2026/05/21',
-    excerpt: 'Contratar uma agencia de marketing digital rj pode aumentar[…]',
-  },
-];
-
-const team = [
-  { img: '/wp-content/uploads/2025/11/Marco-Digital.png', alt: '', name: 'Camila Soraes', role: 'Designer' },
-  { img: '/wp-content/uploads/2025/10/Marcos-Henrique-scaled-e1761825132125.jpg', alt: '', name: 'Marcos Henrique', role: 'Marketing, vendas e IA' },
-  { img: '/wp-content/uploads/2025/11/Alan.jpeg', alt: '', name: 'Alan Rodrigues', role: 'Copywriter' },
-];
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
-<Layout title="Página Inicial - MARCOS HENRIQUE">
+<Layout title="Blog - MARCOS HENRIQUE" description="Artigos sobre marketing digital, funis e aquisição de clientes com inteligência artificial." canonical="https://marcoshenrique.me/blog/">
   <header class="site">
     <div class="wrap">
       <a class="logo" href="/">MARCOS HENRIQUE</a>
       <nav>
         <ul>
           <li><a href="/">HOME</a></li>
-          <li><a href="/blog/">SOBRE MIM</a></li>
           <li><a href="/blog/">BLOG</a></li>
-          <li><a href="https://wa.me/5521965944207?text=Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F">FALE CONOSCO</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <section class="hero" id="hero" style="background-image:url('/wp-content/uploads/2025/10/hero3.jpg')">
-    <div class="wrap">
-      <h1>Especialista em Funis de Marketing e Vendas com Inteligência Artificial</h1>
-      <p class="lead"><br>Mais de 10 anos no mercado, atendemos mais de 100 clientes e já investimos mais de 3 milhões de reais investidos em anúncios.</p>
-      <div>
-        <a class="btn" href="http://Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F/">Agendar Consultoria Gratuita</a>
-        <a class="btn" href="http://Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F/">Falar no WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap grid grid-2">
-      <div>
-        <h2>Sobre Marcos Henrique</h2>
-        <div class="divider"></div>
-        <p class="lead">Mais de 10 anos no mercado, atendemos mais de 100 clientes e já investimos mais de 3 milhões de reais investidos em anúncios.</p>
-        <p>Meu nome é Marcos Henrique, sou um profissional de marketing digital certificado pela Digital Marketer e especialista em criação de processos de aquisição e conversão de novos clientes para pequenas empresas e profissionais liberais.</p>
-        <a class="btn" href="#">read more</a>
-      </div>
-      <div>
-        <img src="/wp-content/uploads/2025/10/Marcos-Henrique-scaled-e1761825132125.jpg" alt="" width="1706" height="1754" />
-      </div>
-    </div>
-  </section>
-
-  <section id="services" style="background:rgba(43,45,66,.04)">
-    <div class="wrap">
-      <div class="center">
-        <h2>Meu Diferencial</h2>
-        <div class="divider" style="margin:10px auto 20px"></div>
-        <p class="lead">Eu quero te explicar agora o meu diferencial e porque você deveria contratar nossos produtos e serviços.</p>
-      </div>
-      <div class="grid grid-3" style="margin-top:40px">
-        <div class="card center">
-          <h4>Mais de 10 anos de mercado</h4>
-          <p>Temos muitos anos de experiência e atendemos a diversos tipos de nichos e isso nos proporcionou ter uma bagagem sólida sobre aquisição de clientes online.</p>
-        </div>
-        <div class="card center">
-          <h4>Especialista em Funis de marketing</h4>
-          <p>Temos a expertise necessária para definir o melhor (ou os melhores) funis de aquisição e geração de demanda personalizados para o seu negócio.</p>
-        </div>
-        <div class="card center">
-          <h4>Especialista em inteligência artificial</h4>
-          <p>Nos ultimos 3 anos viemos nos atualizando para usar todo o poder das IA e automações para potencializar os resultados dos nossos clientes de forma definitiva.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="content">
-    <div class="wrap grid grid-2">
-      <div>
-        <h2>Depoimentos</h2>
-        <div class="divider"></div>
-        <p>Veja o que algumas pessoas falam sobre o nosso trabalho:</p>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/SsM_6xSaTQk?start=&amp;end=&amp;autoplay=0&amp;mute=0&amp;loop=0&amp;controls=1&amp;modestBranding=0&amp;rel=0&amp;enablejsapi=1" title="Depoimentos" allowfullscreen allow="autoplay"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="cta" class="bg-dark" style="background-image:url('/wp-content/uploads/2025/10/contact-small.jpg')">
-    <div class="wrap center">
-      <h2>O que você está esperando? 🙂</h2>
-      <p class="lead">Clique no botão abaixo para agendar uma reunião estratégica e destrave os seus resultados.</p>
-      <a class="btn" href="http://Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F/">quero agendar uma reunião online &gt;&gt;&gt;</a>
-    </div>
-  </section>
-
-  <section id="team">
-    <div class="wrap">
-      <div class="center">
-        <h2>Nosso Time</h2>
-        <div class="divider" style="margin:10px auto 20px"></div>
-        <p class="lead">Conheça os profissionais que trabalham comigo:</p>
-      </div>
-      <div class="grid grid-3 center" style="margin-top:40px">
-        {team.map((p) => (
-          <div class="team-card">
-            <img src={p.img} alt={p.alt} loading="lazy" />
-            <h4>{p.name}</h4>
-            <h6>{p.role}</h6>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="blog" style="background:rgba(43,45,66,.04)">
-    <div class="wrap">
-      <div>
-        <h2>Nosso Blog</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="grid grid-3" style="margin-top:30px">
-        {posts.map((p) => (
-          <article class="blog-card">
-            <a href={p.href}><img src={p.img} alt={p.alt} loading="lazy" /></a>
-            <a href={p.href}><h4 style="margin-top:16px">{p.title}</h4></a>
-            <p style="font-size:13px;color:#69768B">Written by <a href="/author/marcoshenriquemhbc/">marcoshenriquemhbc</a> | on <a href={`/${p.dateUrl}/`}>{p.date}</a></p>
-            <p>{p.excerpt}</p>
-            <a class="btn" href={p.href} style="padding:10px 24px">Read more</a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="bg-dark" style="background-image:url('/wp-content/uploads/2025/10/contact.jpg')">
-    <div class="wrap">
-      <h2>Fale Conosco</h2>
-      <div class="divider" style="border-color:var(--c1)"></div>
-      <p class="lead">Fique a vontade para falar conosco através do o WhatsApp disponível no site ou pelo meu atual instagram @marcoshenrique.especialista</p>
-    </div>
-  </section>
-
-  <footer class="site">
-    <p>© 2026 MARCOS HENRIQUE</p>
-  </footer>
+  <main class="wrap article">
+    <h1>Blog</h1>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={`/${post.id}/`}><h2>{post.data.title}</h2></a>
+          <p class="meta"><time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time></p>
+          <p>{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+    {posts.length === 0 && <p>Em breve, novos artigos.</p>}
+  </main>
+  <footer class="site"><p>© 2026 MARCOS HENRIQUE</p></footer>
 </Layout>
