@@ -17,11 +17,14 @@ const { title, description = '', canonical = '/' } = Astro.props;
   {description && <meta property="og:description" content={description} />}
   <meta property="og:site_name" content="MARCOS HENRIQUE" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="/wp-content/uploads/2025/10/cropped-Marcos-Henrique-scaled-e1761825132125-32x32.jpg" sizes="32x32" />
   <link rel="apple-touch-icon" href="/wp-content/uploads/2025/10/cropped-Marcos-Henrique-scaled-e1761825132125-180x180.jpg" />
   <meta name="google-adsense-account" content="ca-pub-5797827587542105" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5797827587542105" crossorigin="anonymous"></script>
-  <style>
+  <style is:global>
     .article { max-width: 760px; padding: 60px 20px; }
     .post-list { list-style: none; padding: 0; }
     .post-list li { padding: 24px 0; border-bottom: 1px solid #eee; }
@@ -40,7 +43,7 @@ const { title, description = '', canonical = '/' } = Astro.props;
     }
     a { color: var(--c1); text-decoration: none; font-weight: 600; }
     h1, h2, h3, h4, h6 { margin: 0 0 16px; font-weight: 700; color: var(--c6); line-height: 1.2; }
-    h1 { font-size: 3.6em; }
+    h1 { font-size: 5.5em; line-height: 1.26; }
     h2 { font-size: 3em; }
     h4 { font-size: 1.4em; font-weight: 500; }
     h6 { font-size: .9em; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); font-weight: 400; }
@@ -89,6 +92,7 @@ const { title, description = '', canonical = '/' } = Astro.props;
     #whatsapp-btn:hover { background: #128c7e; }
     @media (max-width: 900px) {
       h1 { font-size: 2.5em; }
+      .hero { padding: 60px 20px; }
       h2 { font-size: 2.2em; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       nav ul { gap: 18px; }
