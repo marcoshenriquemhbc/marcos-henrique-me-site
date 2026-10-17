@@ -1,5 +1,5 @@
 ---
-const { title, description = '', canonical = '/' } = Astro.props;
+const { title, description = '', canonical = '/', ogImage = undefined, ogType = 'website', publishedTime = undefined, modifiedTime = undefined } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,7 +11,10 @@ const { title, description = '', canonical = '/' } = Astro.props;
   {description && <meta name="description" content={description} />}
   <link rel="canonical" href={canonical} />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
   <meta property="og:title" content={title} />
   <meta property="og:url" content={canonical} />
   {description && <meta property="og:description" content={description} />}
@@ -26,6 +29,11 @@ const { title, description = '', canonical = '/' } = Astro.props;
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5797827587542105" crossorigin="anonymous"></script>
   <style is:global>
     .article { max-width: 760px; padding: 60px 20px; }
+    .article nav { font-size: 14px; color: #69768B; margin-bottom: 16px; }
+    .article nav a { color: #69768B; font-weight: 400; }
+    .faq, .related { margin-top: 48px; }
+    .faq h3 { font-size: 1.1em; margin-top: 20px; }
+    .related li { margin: 8px 0; }
     .post-list { list-style: none; padding: 0; }
     .post-list li { padding: 24px 0; border-bottom: 1px solid #eee; }
     .post-list h2 { font-size: 1.5em; margin-bottom: 6px; }

@@ -9,33 +9,93 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const url = `https://marcoshenrique.me/${post.id}/`;
-const jsonLd = {
+const url = 'https://marcoshenrique.me/' + post.id + '/';
+const published = post.data.pubDate.toISOString();
+const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+const imageUrl = post.data.image && post.data.image.startsWith('/') ? 'https://marcoshenrique.me' + post.data.image : undefined;
+
+const all = await getCollection('blog', ({ data }) => !data.draft);
+const related = all
+  .filter((p) => p.id !== post.id && p.data.tags.some((t) => post.data.tags.includes(t)))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const article = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: post.data.title,
   description: post.data.description,
-  datePublished: post.data.pubDate.toISOString(),
-  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  datePublished: published,
+  dateModified: modified,
+  inLanguage: 'pt-BR',
   author: { '@type': 'Person', name: 'Marcos Henrique', url: 'https://marcoshenrique.me/' },
+  publisher: { '@type': 'Person', name: 'Marcos Henrique', url: 'https://marcoshenrique.me/' },
   mainEntityOfPage: url,
-  image: post.data.image,
+  keywords: post.data.keyword || post.data.tags.join(', '),
+  ...(imageUrl ? { image: imageUrl } : {}),
 };
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://marcoshenrique.me/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://marcoshenrique.me/blog/' },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: url },
+  ],
+};
+
+const faqSchema = post.data.faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.data.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
 ---
-<Layout title={post.data.title} description={post.data.description} canonical={url}>
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<Layout title={post.data.title} description={post.data.description} canonical={url} ogImage={imageUrl} ogType="article" publishedTime={published} modifiedTime={modified}>
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <header class="site">
     <div class="wrap">
       <a class="logo" href="/">MARCOS HENRIQUE</a>
     </div>
   </header>
   <main class="wrap article">
+    <nav aria-label="Você está em"><a href="/">Início</a> › <a href="/blog/">Blog</a> › <span>{post.data.title}</span></nav>
     <h1>{post.data.title}</h1>
     <p class="meta">
-      <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
+      <time datetime={published}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
+      {post.data.updatedDate && <span> · atualizado em <time datetime={modified}>{post.data.updatedDate.toLocaleDateString('pt-BR')}</time></span>}
     </p>
-    {post.data.image && <img src={post.data.image} alt={post.data.imageAlt ?? ''} />}
+    {post.data.image && <img src={post.data.image} alt={post.data.imageAlt ?? ''} width="1200" height="630" />}
     <Content />
+    {post.data.faq.length > 0 && (
+      <section class="faq">
+        <h2>Perguntas frequentes</h2>
+        {post.data.faq.map((f) => (
+          <div>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </section>
+    )}
+    {related.length > 0 && (
+      <section class="related">
+        <h2>Leia também</h2>
+        <ul>
+          {related.map((r) => (
+            <li><a href={'/' + r.id + '/'}>{r.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
   </main>
   <footer class="site"><p>© 2026 MARCOS HENRIQUE</p></footer>
 </Layout>
