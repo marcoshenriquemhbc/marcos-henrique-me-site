@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout title="Blog - MARCOS HENRIQUE" description="Artigos sobre marketing digital, funis e aquisição de clientes com inteligência artificial." canonical="https://marcoshenrique.me/blog/">
+  <header class="site">
+    <div class="wrap">
+      <a class="logo" href="/">MARCOS HENRIQUE</a>
+      <nav>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/blog/">BLOG</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap article">
+    <h1>Blog</h1>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={`/${post.id}/`}><h2>{post.data.title}</h2></a>
+          <p class="meta"><time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time></p>
+          <p>{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+    {posts.length === 0 && <p>Em breve, novos artigos.</p>}
+  </main>
+  <footer class="site"><p>© 2026 MARCOS HENRIQUE</p></footer>
+</Layout>
