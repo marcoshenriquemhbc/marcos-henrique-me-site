@@ -1,5 +1,5 @@
 ---
-title: "Como Usar IA para Criar Anúncios de Alta Conversão e Testar Criativos no Tráfego Pago"
+title: "Como Usar IA para Criar Anúncios e Testar Criativos"
 description: "Aprenda a usar a IA para criar anúncios eficientes no tráfego pago, validando criativos e copies com prompts práticos sem perder a estratégia humana."
 pubDate: 2026-11-25
 tags: ["Inteligência Artificial","Tráfego Pago","Meta Ads","Copywriting","Gestão de Tráfego"]
