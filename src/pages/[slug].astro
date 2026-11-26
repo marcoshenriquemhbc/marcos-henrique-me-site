@@ -1,6 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
+
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -10,16 +9,36 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const url = `https://marcoshenrique.me/${post.id}/`;
+const faq = post.data.faq ?? [];
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: post.data.title,
-  description: post.data.description,
-  datePublished: post.data.pubDate.toISOString(),
-  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-  author: { '@type': 'Person', name: 'Marcos Henrique', url: 'https://marcoshenrique.me/' },
-  mainEntityOfPage: url,
-  image: post.data.image,
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.pubDate.toISOString(),
+      dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+      inLanguage: 'pt-BR',
+      mainEntityOfPage: url,
+      image: post.data.image,
+      author: { '@type': 'Person', '@id': 'https://marcoshenrique.me/#person', name: 'Marcos Henrique', url: 'https://marcoshenrique.me/' },
+      publisher: { '@id': 'https://marcoshenrique.me/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://marcoshenrique.me/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://marcoshenrique.me/blog/' },
+        { '@type': 'ListItem', position: 3, name: post.data.title, item: url },
+      ],
+    },
+    ...(faq.length ? [{
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    }] : []),
+  ],
 };
 ---
 <Layout title={post.data.title} description={post.data.description} canonical={url}>
@@ -29,13 +48,24 @@ const jsonLd = {
       <a class="logo" href="/">MARCOS HENRIQUE</a>
     </div>
   </header>
-  <main class="wrap article">
-    <h1>{post.data.title}</h1>
-    <p class="meta">
-      <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
-    </p>
-    {post.data.image && <img src={post.data.image} alt={post.data.imageAlt ?? ''} />}
-    <Content />
+  <main class="article-main">
+    <article class="article-wrap">
+      <aside class="author-card" aria-label="Sobre o autor">
+        <img class="author-avatar" src="/wp-content/uploads/2025/10/Marcos-Henrique-scaled-e1761825132125.jpg" alt="Foto de Marcos Henrique" width="72" height="72" />
+        <div>
+          <p class="author-name">Marcos Henrique</p>
+          <p class="author-role">Especialista em tráfego pago e funis de vendas com IA.</p>
+        </div>
+      </aside>
+      <h1>{post.data.title}</h1>
+      <p class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
+      </p>
+      {post.data.image && <figure><img src={post.data.image} alt={post.data.imageAlt ?? ''} width="1920" height="1080" /></figure>}
+      <div class="article-body">
+        <Content />
+      </div>
+    </article>
   </main>
   <footer class="site"><p>© 2026 MARCOS HENRIQUE</p></footer>
 </Layout>
