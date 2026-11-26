@@ -951,7 +951,7 @@
   </main>
 
   <footer>
-    <p>© 2026 Marcos Henrique</p>
+    <p>© <span id="mh-year">2026</span> Marcos Henrique - Especialista em tráfego pago e funis de vendas com IA.</p>
   </footer>
 
   <script>
@@ -996,6 +996,9 @@
         }, 3000);
       });
     });
+  </script>
+  <script>
+    document.getElementById('mh-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
