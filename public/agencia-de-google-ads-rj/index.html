@@ -16,7 +16,7 @@
   <meta property="og:title" content="Agência de Google Ads RJ: como escolher e o que esperar em 2026 | Marcos Henrique">
   <meta property="og:description" content="Buscando uma agência de Google Ads no RJ? Veja como estruturar campanhas, reduzir o custo por lead e escolher um fornecedor com critérios técnicos.">
   <meta property="og:url" content="https://marcoshenrique.me/agencia-de-google-ads-rj/">
-  <meta property="og:image" content="https://marcoshenrique.me/assets/img/agencia-de-google-ads-rj.png">
+  <meta property="og:image" content="https://www.marcoshenrique.me/wp-content/uploads/2026/05/Agencia-de-Google-Ads-Rj.png">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
   <meta property="og:image:type" content="image/png">
@@ -36,7 +36,7 @@
         "datePublished": "2026-05-20T12:25:00-03:00",
         "inLanguage": "pt-BR",
         "mainEntityOfPage": "https://marcoshenrique.me/agencia-de-google-ads-rj/",
-        "image": "https://marcoshenrique.me/assets/img/agencia-de-google-ads-rj.png",
+        "image": "https://www.marcoshenrique.me/wp-content/uploads/2026/05/Agencia-de-Google-Ads-Rj.png",
         "author": { "@id": "https://marcoshenrique.me/#person" },
         "publisher": { "@id": "https://marcoshenrique.me/#person" }
       },
@@ -260,6 +260,93 @@
       padding-top: 24px;
     }
 
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--line);
+    }
+
+    /* ===== Botão flutuante WhatsApp (canto inferior direito) ===== */
+    #whatsapp-float {
+      position: fixed;
+      width: 70px;
+      height: 70px;
+      bottom: 40px;
+      right: 40px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background-color: #25d366;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #25d366;
+      animation: glow-pulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow-pulse {
+      from { box-shadow: 0 0 10px #25d366; }
+      to   { box-shadow: 0 0 20px #25d366, 0 0 30px #25d366; }
+    }
+    #whatsapp-btn:hover {
+      background-color: #128c7e;
+      transform: scale(1.1);
+      animation-play-state: paused;
+    }
+    #whatsapp-float .mh-float-tooltip {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #25d366;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      max-width: 280px;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.4;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      z-index: 101;
+    }
+    #whatsapp-float .mh-float-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #25d366;
+    }
+    @media (max-width: 768px) {
+      #whatsapp-float { width: 60px; height: 60px; bottom: 20px; right: 20px; }
+      #whatsapp-btn { width: 60px; height: 60px; }
+      #whatsapp-btn svg { width: 35px; height: 35px; }
+      #whatsapp-float .mh-float-tooltip { font-size: 14px; max-width: 220px; top: -65px; padding: 10px 14px; }
+    }
+
     /* ===== Barra de topo WhatsApp ===== */
     #mh-topbar {
       --mh-navy: #2b2d42;
@@ -379,6 +466,15 @@
     </button>
   </div>
 
+  <div id="whatsapp-float">
+    <a id="whatsapp-btn" href="https://wa.me/5521965944207?text=Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" fill="none" width="40" height="40" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.465 3.488A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.885 3.488" fill="#fff"/>
+      </svg>
+    </a>
+    <span class="mh-float-tooltip">Clique e fale conosco</span>
+  </div>
+
   <header class="site-header">
     <div class="site-header__inner">
       <a href="https://marcoshenrique.me/">Marcos Henrique</a>
@@ -389,14 +485,14 @@
     <article itemscope itemtype="https://schema.org/Article">
 
       <p class="meta">
-        <span itemprop="author">Marcos Henrique</span> ·
-        <time itemprop="datePublished" datetime="2026-05-20">20 de maio de 2026</time>
+        <img class="author-avatar" src="https://www.marcoshenrique.me/wp-content/uploads/2025/10/Marcos-Henrique-scaled-e1761825132125.jpg" alt="Foto de Marcos Henrique" width="40" height="40">
+        <span itemprop="author">Marcos Henrique</span>
       </p>
 
       <h1 itemprop="headline">Agência de Google Ads RJ</h1>
 
       <figure>
-        <img src="/assets/img/agencia-de-google-ads-rj.png"
+        <img src="https://www.marcoshenrique.me/wp-content/uploads/2026/05/Agencia-de-Google-Ads-Rj.png"
              width="1920" height="1080"
              alt="Ilustração de campanhas de Google Ads para empresas do Rio de Janeiro">
         <figcaption>Agência de Google Ads RJ</figcaption>
@@ -820,6 +916,7 @@
           <p><strong>💡 Consultoria estratégica gratuita (30 minutos)</strong></p>
           <p>Deseja validar se suas campanhas de tráfego pago estão performando com a máxima eficiência ou se existem pontos cegos drenando seus lucros?</p>
           <p>Agende uma sessão de diagnóstico de trinta minutos com nossos estrategistas seniores — sem custos, sem pitches de vendas agressivos, apenas uma análise transparente e detalhada dos seus dados.</p>
+          <p>Clique no botão à esquerda ou no topo para falar diretamente com o Marcos Henrique.</p>
         </div>
 
       </div>
@@ -852,6 +949,26 @@
       closeBtn.addEventListener('click', hideAndReturnLater);
       show();
     })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('whatsapp-btn');
+      var tooltip = document.querySelector('#whatsapp-float .mh-float-tooltip');
+      var timeoutId;
+      if (!btn || !tooltip) return;
+
+      btn.addEventListener('mouseenter', function () {
+        clearTimeout(timeoutId);
+        tooltip.style.opacity = '1';
+        tooltip.style.visibility = 'visible';
+      });
+      btn.addEventListener('mouseleave', function () {
+        timeoutId = setTimeout(function () {
+          tooltip.style.opacity = '0';
+          tooltip.style.visibility = 'hidden';
+        }, 3000);
+      });
+    });
   </script>
 </body>
 </html>
