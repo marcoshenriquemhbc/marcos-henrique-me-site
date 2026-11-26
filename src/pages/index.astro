@@ -44,6 +44,13 @@
   .btn-light { background: #ffffff; color: var(--c1); }
   .btn-whatsapp { background: #25D366; color: #ffffff; }
   .btn-whatsapp:hover { background: #128C7E; color: #ffffff; }
+  .loc-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 10px 18px 10px 14px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); color: #ffffff; font-size: 15px; backdrop-filter: blur(4px); }
+  .loc-badge strong { color: #ffffff; font-weight: 700; }
+  .loc-badge svg { color: #25D366; }
+  .loc-badge svg.flag { color: inherit; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,.35); flex-shrink: 0; }
+  .loc-pulse { width: 8px; height: 8px; border-radius: 50%; background: #25D366; box-shadow: 0 0 0 0 rgba(37,211,102,.7); animation: loc-pulse 2s infinite; }
+  @keyframes loc-pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.7); } 70% { box-shadow: 0 0 0 9px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+  @media (prefers-reduced-motion: reduce) { .loc-pulse { animation: none; } }
 
   section { padding: 72px 0; }
   section.alt { background: var(--soft); }
@@ -104,11 +111,17 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div class="tag">Media Buyer · Meta Ads · Google Ads</div>
-    <h1>Tráfego pago que gera leads e vendas, com tracking e funil alinhados à oferta</h1>
-    <p class="lead">Quase 10 anos gerenciando campanhas para negócios de educação, saúde, tecnologia e serviços. Sou brasileiro, moro no Paraguai e trabalho remotamente com fuso próximo ao horário dos EUA.</p>
+    <h1>Eu serei o seu último gestor de marketing de performance. Vou dobrar seus resultados de leads e vendas com estratégias de tráfego pago, funis, copywriting e posicionamento.</h1>
+    <p class="lead">Mais de 10 anos de experiência gerenciando campanhas para negócios de educação, saúde, tecnologia e serviços.</p>
     <div class="btns">
       <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send/?phone=5521965944207&text=Ol%C3%A1+Marcos+Henrique%21+Gostaria+da+sua+ajuda+com+marketing+digital.+Poderiamos+conversar+melhor%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
       <a class="btn btn-light" href="https://www.linkedin.com/in/marcos-henrique-me/" target="_blank" rel="noopener noreferrer">Conectar no LinkedIn</a>
+    </div>
+    <div class="loc-badge" aria-label="Localização atual: Paraguai">
+      <span class="loc-pulse" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+      <span>Localização atual: <strong>Paraguai</strong></span>
+      <svg class="flag" viewBox="0 0 22 15" width="22" height="15" aria-hidden="true" focusable="false"><rect width="22" height="5" fill="#D52B1E"/><rect y="5" width="22" height="5" fill="#FFFFFF"/><rect y="10" width="22" height="5" fill="#0038A8"/><circle cx="11" cy="7.5" r="1.9" fill="#F5C518" stroke="#0038A8" stroke-width=".4"/></svg>
     </div>
   </div>
 </section>
