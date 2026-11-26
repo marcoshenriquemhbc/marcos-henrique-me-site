@@ -15,38 +15,40 @@ const { title, description = '', canonical = '/' } = Astro.props;
   <meta property="og:title" content={title} />
   <meta property="og:url" content={canonical} />
   {description && <meta property="og:description" content={description} />}
-  <meta property="og:site_name" content="MARCOS HENRIQUE" />
+  <meta property="og:site_name" content="Marcos Henrique" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/wp-content/uploads/2025/10/cropped-Marcos-Henrique-scaled-e1761825132125-32x32.jpg" sizes="32x32" />
   <link rel="apple-touch-icon" href="/wp-content/uploads/2025/10/cropped-Marcos-Henrique-scaled-e1761825132125-180x180.jpg" />
   <meta name="google-adsense-account" content="ca-pub-5797827587542105" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5797827587542105" crossorigin="anonymous"></script>
   <style is:global>
-    .article { max-width: 760px; padding: 60px 20px; }
-    .post-list { list-style: none; padding: 0; }
-    .post-list li { padding: 24px 0; border-bottom: 1px solid #eee; }
-    .post-list h2 { font-size: 1.5em; margin-bottom: 6px; }
-    .article h1 { font-size: 2.4em; }
-    .article .meta { color: #69768B; font-size: 14px; }
-    .article img { border-radius: 4px; margin: 20px 0; }
-    .article h2 { font-size: 1.8em; margin-top: 40px; }
     :root {
       --c1: #2F7CFF; --c2: #F17C20; --c4: #69768B; --c5: #FFFFFF; --c6: #2B2D42;
+      --blue: #2f7cff; --blue-dark: #1f52a9; --ink: #2b2d42; --ink-soft: #4a4d66;
+      --surface: #f4f7fb; --line: #dfe5ef; --wpp: #25d366; --wpp-dark: #128c7e;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0; font-family: Mulish, Helvetica, Arial, sans-serif; font-weight: 300;
-      font-size: 16px; line-height: 1.5; color: var(--c6); background: #fff;
+      margin: 0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 17px; line-height: 1.7; color: var(--ink-soft); background: #fff;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--c1); text-decoration: none; font-weight: 600; }
-    h1, h2, h3, h4, h6 { margin: 0 0 16px; font-weight: 700; color: var(--c6); line-height: 1.2; }
-    h1 { font-size: 5.5em; line-height: 1.26; }
-    h2 { font-size: 3em; }
+    a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--blue-dark); }
+    h1, h2, h3, h4, h6 { margin: 0 0 16px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 24px; }
+    h2 { font-size: 1.85rem; line-height: 1.25; letter-spacing: -0.01em; margin: 56px 0 16px; }
+    h3 { font-size: 1.3rem; line-height: 1.35; font-weight: 600; margin: 36px 0 12px; }
     h4 { font-size: 1.4em; font-weight: 500; }
     h6 { font-size: .9em; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); font-weight: 400; }
+    p { margin: 0 0 18px; }
+    strong { color: var(--ink); font-weight: 600; }
+    ul, ol { padding-left: 1.4em; margin: 0 0 20px; }
+    li { margin-bottom: 8px; }
     img { max-width: 100%; height: auto; display: block; }
     section { padding: 100px 20px; }
     .wrap { max-width: 1140px; margin: 0 auto; }
@@ -55,57 +57,126 @@ const { title, description = '', canonical = '/' } = Astro.props;
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .center { text-align: center; }
     .divider { width: 100px; border-bottom: 4px solid var(--c1); margin: 10px 0 20px; }
-    .btn {
-      display: inline-block; padding: 15px 40px; border-radius: 3px; background: var(--c1);
-      color: #fff; font-weight: 600; margin: 6px; border: 0;
-    }
-    .btn:hover { background: #1F52A9; }
-    .btn-light { background: #fff; color: var(--c6); }
+    .btn { display: inline-block; padding: 15px 40px; border-radius: 3px; background: var(--c1); color: #fff; font-weight: 600; margin: 6px; border: 0; }
+    .btn:hover { background: var(--blue-dark); color: #fff; }
     .lead { font-size: 1.2em; line-height: 1.5; }
     header.site { background: #fff; padding: 16px 20px; box-shadow: 0 0 10px rgba(23,25,39,.1); position: sticky; top: 0; z-index: 50; }
     header.site .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .logo { font-weight: 700; font-size: 22px; color: var(--c6); }
-    nav ul { list-style: none; display: flex; gap: 36px; margin: 0; padding: 0; flex-wrap: wrap; }
-    nav a { color: var(--c6); font-weight: 400; font-size: 16px; }
+    .logo { font-weight: 700; font-size: 22px; color: var(--ink); text-decoration: none; }
     .hero { background-size: cover; background-position: 51% 100%; color: #fff; position: relative; padding: 140px 20px; }
     .hero::before { content: ""; position: absolute; inset: 0; background: rgba(17,18,26,.6); }
     .hero .wrap { position: relative; }
     .hero h1, .hero p, .hero h2 { color: #fff; }
-    .bg-dark { color: #fff; position: relative; background-size: cover; background-position: 50% 50%; }
-    .bg-dark::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.7); }
-    .bg-dark .wrap { position: relative; }
-    .bg-dark h2, .bg-dark p { color: #fff; }
-    .bg-dark h2 { color: var(--c2); }
     .card { padding: 20px; }
-    .card img { border-radius: 4px; }
-    .blog-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; }
+    .card img, .blog-card img { border-radius: 4px; }
+    .blog-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
     .team-card img { width: 100%; max-width: 280px; margin: 0 auto 16px; border-radius: 4px; }
     .video { position: relative; aspect-ratio: 16/9; width: 100%; }
     .video iframe { width: 100%; height: 100%; border: 0; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .post-list h2 { font-size: 1.5em; margin-bottom: 6px; }
+    .meta { font-size: 14px; color: var(--ink-soft); margin: 0 0 16px; }
+    .article-main { padding: 48px 20px 80px; }
+    .article-wrap { max-width: 760px; margin: 0 auto; }
+    .article-body figure { margin: 32px 0; }
+    .article-body img { border-radius: 10px; width: 100%; }
+    .article-body figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+    .table-wrap { overflow-x: auto; margin: 24px 0 32px; border: 1px solid var(--line); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    thead th { background: var(--surface); color: var(--ink); font-weight: 600; }
+    tbody tr:last-child td { border-bottom: 0; }
+    pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; overflow-x: auto; font-size: 14px; line-height: 1.5; color: var(--ink); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+    .cta-box { background: var(--surface); border-left: 4px solid var(--blue); border-radius: 10px; padding: 24px; margin: 40px 0; }
+    .cta-box p:last-child { margin-bottom: 0; }
+    .author-card { display: flex; align-items: center; gap: 18px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 14px; padding: 18px 22px; margin: 0 0 40px; }
+    .author-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(15,20,40,.15); }
+    .author-name { margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
+    .author-role { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
     footer.site { background: var(--c6); color: #fff; padding: 40px 20px; text-align: center; }
     footer.site p { color: #fff; margin: 0; }
-    #whatsapp-float { position: fixed; bottom: 40px; right: 40px; z-index: 100; }
-    #whatsapp-btn {
-      display: flex; align-items: center; justify-content: center; width: 70px; height: 70px;
-      background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366;
+    /* Barra de topo WhatsApp */
+    #mh-topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 12px 56px 12px 20px; background: var(--ink); color: #fff; font-size: 15px; line-height: 1.4; box-shadow: 0 2px 12px rgba(15,20,40,.25); border-bottom: 3px solid var(--blue); }
+    #mh-topbar[hidden] { display: none; }
+    .mh-topbar__inner { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; max-width: 1100px; width: 100%; }
+    .mh-topbar__text { margin: 0; color: #fff; }
+    .mh-topbar__sub { color: rgba(255,255,255,.78); margin-left: 6px; }
+    .mh-topbar__btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 6px; background: var(--wpp); color: #0b2a18; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; }
+    .mh-topbar__btn:hover { background: var(--wpp-dark); color: #fff; }
+    .mh-topbar__icon { width: 18px; height: 18px; flex-shrink: 0; }
+    .mh-topbar__close { position: absolute; top: 50%; right: 12px; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+    .mh-topbar__close:hover { background: rgba(255,255,255,.25); }
+    @media (max-width: 640px) {
+      #mh-topbar { font-size: 14px; padding: 14px 44px 14px 14px; }
+      .mh-topbar__inner { flex-direction: column; gap: 10px; text-align: center; }
+      .mh-topbar__sub { display: block; margin: 2px 0 0; }
+      .mh-topbar__btn { width: 100%; justify-content: center; }
     }
-    #whatsapp-btn:hover { background: #128c7e; }
+    /* Botão flutuante WhatsApp */
+    #whatsapp-float { position: fixed; width: 70px; height: 70px; bottom: 40px; right: 40px; z-index: 100; display: flex; flex-direction: column; align-items: center; }
+    #whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; background: var(--wpp); border-radius: 50%; text-decoration: none; transition: .3s; box-shadow: 0 0 10px var(--wpp); animation: glow-pulse 2s ease-in-out infinite alternate; }
+    @keyframes glow-pulse { from { box-shadow: 0 0 10px var(--wpp); } to { box-shadow: 0 0 20px var(--wpp), 0 0 30px var(--wpp); } }
+    #whatsapp-btn:hover { background: var(--wpp-dark); transform: scale(1.1); animation-play-state: paused; }
+    #whatsapp-float .mh-float-tooltip { position: absolute; top: -70px; left: 50%; transform: translateX(-50%); background: var(--wpp); color: #fff; padding: 12px 18px; border-radius: 8px; font-size: 16px; font-weight: 700; max-width: 280px; text-align: center; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease; box-shadow: 0 2px 10px rgba(0,0,0,.2); z-index: 101; }
+    @media (max-width: 768px) {
+      #whatsapp-float { width: 60px; height: 60px; bottom: 20px; right: 20px; }
+      #whatsapp-btn { width: 60px; height: 60px; }
+      #whatsapp-btn svg { width: 35px; height: 35px; }
+      #whatsapp-float .mh-float-tooltip { font-size: 14px; max-width: 220px; top: -65px; padding: 10px 14px; }
+    }
     @media (max-width: 900px) {
       h1 { font-size: 2.5em; }
       .hero { padding: 60px 20px; }
       h2 { font-size: 2.2em; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      nav ul { gap: 18px; }
       section { padding: 60px 20px; }
     }
+    @media (max-width: 480px) { .author-card { flex-direction: column; text-align: center; padding: 20px; } }
+    @media (prefers-reduced-motion: reduce) { #whatsapp-btn { animation: none; } }
   </style>
 </head>
 <body>
+  <div id="mh-topbar" role="region" aria-label="Agendar consultoria gratuita pelo WhatsApp" hidden>
+    <div class="mh-topbar__inner">
+      <p class="mh-topbar__text">
+        <strong>Quer aumentar suas vendas com tráfego pago?</strong>
+        <span class="mh-topbar__sub">Agende uma reunião online comigo.</span>
+      </p>
+      <a class="mh-topbar__btn" href="https://wa.me/5521965944207?text=Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+    </div>
+    <button class="mh-topbar__close" type="button" aria-label="Fechar barra"><span aria-hidden="true">×</span></button>
+  </div>
   <slot />
   <div id="whatsapp-float">
-    <a id="whatsapp-btn" href="https://wa.me/5521965944207?text=Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" width="40" height="40"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#fff"/></svg>
+    <a id="whatsapp-btn" href="https://wa.me/5521965944207?text=Ol%C3%A1%20Marcos%20Henrique!%20Gostaria%20da%20sua%20ajuda%20com%20marketing%20digital.%20Poderiamos%20conversar%20melhor%3F" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" width="40" height="40" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#fff"/></svg>
     </a>
+    <span class="mh-float-tooltip">Clique e fale conosco</span>
   </div>
+  <script>
+    (function () {
+      var bar = document.getElementById('mh-topbar');
+      if (bar) {
+        var closeBtn = bar.querySelector('.mh-topbar__close');
+        var timer = null;
+        closeBtn.addEventListener('click', function () {
+          bar.hidden = true;
+          clearTimeout(timer);
+          timer = setTimeout(function () { bar.hidden = false; }, 60 * 1000);
+        });
+        bar.hidden = false;
+      }
+      var btn = document.getElementById('whatsapp-btn');
+      var tip = document.querySelector('#whatsapp-float .mh-float-tooltip');
+      var t;
+      if (btn && tip) {
+        btn.addEventListener('mouseenter', function () { clearTimeout(t); tip.style.opacity = '1'; tip.style.visibility = 'visible'; });
+        btn.addEventListener('mouseleave', function () { t = setTimeout(function () { tip.style.opacity = '0'; tip.style.visibility = 'hidden'; }, 3000); });
+      }
+    })();
+  </script>
 </body>
 </html>
