@@ -11,6 +11,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const url = `https://marcoshenrique.me/${post.id}/`;
 const faq = post.data.faq ?? [];
+const ano = new Date().getFullYear();
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -46,7 +47,7 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <header class="site">
     <div class="wrap">
-      <a class="logo" href="/">MARCOS HENRIQUE</a>
+      <a class="logo" href="/">Marcos Henrique</a>
     </div>
   </header>
   <main class="article-main">
@@ -59,14 +60,13 @@ const jsonLd = {
         </div>
       </aside>
       <h1>{post.data.title}</h1>
-      <p class="meta">
-        <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
-      </p>
       {post.data.image && <figure><img src={post.data.image} alt={post.data.imageAlt ?? ''} width="1920" height="1080" /></figure>}
       <div class="article-body">
         <Content />
       </div>
     </article>
   </main>
-  <footer class="site"><p>© 2026 MARCOS HENRIQUE</p></footer>
+  <footer class="site">
+    <p>© {ano} Marcos Henrique - Especialista em tráfego pago e funis de vendas com IA.</p>
+  </footer>
 </Layout>
