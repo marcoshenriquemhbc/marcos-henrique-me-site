@@ -136,6 +136,10 @@ const { title, description = '', canonical = '/' } = Astro.props;
     }
     @media (max-width: 480px) { .author-card { flex-direction: column; text-align: center; padding: 20px; } }
     @media (prefers-reduced-motion: reduce) { #whatsapp-btn { animation: none; } }
+      .mh-topbar__text strong { color: #ffffff; }
+    .mh-topbar__text { color: #ffffff; }
+    .article-wrap figure { margin: 32px 0; }
+    .article-wrap figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; }
   </style>
 </head>
 <body>
