@@ -18,11 +18,17 @@ Anúncios no YouTube são formatos publicitários em vídeo ou banner exibidos d
 
 ## Por que isso importa
 
+![Por que isso importa no YouTube Ads](/blog/como-fazer-anuncios-no-youtube-para-seu-negocio-2.jpg)
+
+
 O vídeo se tornou o principal formato de consumo de informação na internet. Quando sua empresa utiliza essa plataforma de forma estratégica, ela consegue captar a atenção visual e auditiva do público, gerando maior retenção da mensagem.
 
 Além disso, como o ambiente pertence ao ecossistema do Google, a capacidade de segmentação é extremamente avançada. É possível exibir suas campanhas apenas para quem pesquisou por termos específicos recentemente ou para quem consome canais diretamente relacionados ao seu setor de atuação.
 
 ## Erros comuns
+
+![Erros comuns no YouTube Ads](/blog/como-fazer-anuncios-no-youtube-para-seu-negocio-3.jpg)
+
 
 ### Ignorar os primeiros cinco segundos do vídeo
 * **Erro**: Produzir vídeos com introduções longas e institucionais antes de apresentar a solução.
@@ -43,6 +49,9 @@ Além disso, como o ambiente pertence ao ecossistema do Google, a capacidade de 
 * **Solução**: Insira uma chamada para ação verbal e visual ao longo e ao final do anúncio, indicando o próximo clique.
 
 ## Passo a passo
+
+![Passo a passo no YouTube Ads](/blog/como-fazer-anuncios-no-youtube-para-seu-negocio-4.jpg)
+
 
 ### Definir o objetivo da campanha
 Determine se a meta é gerar cadastros, realizar vendas diretas no e-commerce ou aumentar a visibilidade da marca antes de criar a estrutura técnica.
