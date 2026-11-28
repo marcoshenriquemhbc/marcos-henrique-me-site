@@ -12,6 +12,7 @@ const { Content } = await render(post);
 const url = `https://marcoshenrique.me/${post.id}/`;
 const faq = post.data.faq ?? [];
 const ano = new Date().getFullYear();
+const relacionados = (await getCollection('blog', ({ data }) => !data.draft)).filter((p) => p.id !== post.id).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -64,6 +65,13 @@ const jsonLd = {
       <div class="article-body">
         <Content />
       </div>
+    <section class="related">
+  <h2>Leia também</h2>
+  <ul>
+    {relacionados.map((p) => (<li><a href={"/" + p.id + "/"}>{p.data.title}</a></li>))}
+  </ul>
+  <p><a href="/agencia-de-trafego-pago-no-rio-de-janeiro/">Conheça a agência de tráfego pago no Rio de Janeiro</a></p>
+</section>
     </article>
   </main>
   <footer class="site">
