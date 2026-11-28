@@ -1,5 +1,6 @@
 ---
 const { title, description = '', canonical = '/' } = Astro.props;
+const siteSchema = {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://marcoshenrique.me/#website","url":"https://marcoshenrique.me/","name":"Marcos Henrique","inLanguage":"pt-BR","publisher":{"@id":"https://marcoshenrique.me/#person"}},{"@type":"Person","@id":"https://marcoshenrique.me/#person","name":"Marcos Henrique","url":"https://marcoshenrique.me/","jobTitle":"Especialista em tráfego pago e funis de vendas com IA","description":"Especialista em tráfego pago, Meta Ads, Google Ads e funis de vendas com IA, com mais de dez anos de experiência.","image":"https://marcoshenrique.me/wp-content/uploads/2025/10/Marcos-Henrique-scaled-e1761825132125.jpg","knowsAbout":["Tráfego pago","Meta Ads","Google Ads","Funis de vendas","Copywriting","Inteligência artificial no marketing"]}]};
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -141,6 +142,7 @@ const { title, description = '', canonical = '/' } = Astro.props;
     .article-wrap figure { margin: 32px 0; }
     .article-wrap figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; }
   </style>
+  <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
 </head>
 <body>
   <div id="mh-topbar" role="region" aria-label="Agendar consultoria gratuita pelo WhatsApp" hidden>
