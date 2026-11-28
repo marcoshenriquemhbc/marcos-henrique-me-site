@@ -1,8 +1,35 @@
-# START YOAST BLOCK
-# ---------------------------
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://marcoshenrique.me/sitemap_index.xml
-# ---------------------------
-# END YOAST BLOCK
+# Rastreadores de busca e de respostas de IA
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://marcoshenrique.me/sitemap-index.xml
